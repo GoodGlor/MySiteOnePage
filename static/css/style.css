@@ -1,0 +1,177 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f5ed;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 40px 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 0 auto 20px;
+}
+
+p {
+    font-size: 1.1rem;
+    max-width: 80%;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.product-image img {
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 15px;
+}
+
+h2 {
+    color: #444;
+    font-size: 2rem;
+}
+
+ul {
+    text-align: left;
+    display: inline-block;
+}
+
+ul li {
+    font-size: 1rem;
+}
+
+.buy-now-button {
+    background-color: #008CBA; /* Updated color for distinction */
+    color: #ffffff;
+    font-size: 1.1rem;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.3s; /* Added transform to transition for effect */
+    display: inline-block; /* Ensure the button is centered correctly */
+    margin: 20px 0; /* Add some space around the button */
+    position: sticky;
+    left: 50px; /* Положение от левого края */
+    transform: translatex(-5px);
+}
+
+
+.buy-now-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slightly enlarges the button on hover */
+}
+
+footer {
+    background-color: #333;
+    color: #ddd;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal-content p {
+    margin-top: 20px; /* Отступ сверху для параграфа, если необходим */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-buy-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 15px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+    #purchaseForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+#purchaseForm input[type="text"],
+#purchaseForm input[type="email"],
+#purchaseForm input[type="tel"],
+#purchaseForm button[type="submit"] {
+    display: block; /* Элементы будут занимать всю доступную ширину и располагаться вертикально */
+    width: 90%; /* Ширина элементов относительно их контейнера */
+    margin: 10px auto; /* Отступы для разделения элементов формы */
+    padding: 10px; /* Внутренние отступы для элементов формы */
+}
+
+#purchaseForm label {
+display: flex;
+justify-content: center; /* Выравнивание содержимого label по центру */
+align-items: center; /* Центрирование checkbox и текста label по вертикали */
+margin: 10px 0; /* Отступ для label */
+}
+
+#purchaseForm input[type="checkbox"] {
+margin-right: 10px; /* Отступ справа от checkbox */
+}
+
+/* Стилизация кнопки отправки формы */
+.modal-buy-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 15px auto; /* Центрирование кнопки */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    display: inline-block; /* Для возможности центрирования */
+}
+
+
+

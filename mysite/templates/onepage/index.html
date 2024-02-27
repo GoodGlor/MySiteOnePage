@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Професійний тример</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+</head>
+<body>
+
+<header>
+
+    <p>Розкрийте свій стиль із нашим унікальним досвідом голінняe</p>
+
+</header>
+
+<section>
+    <div class="product-image">
+        <img src="{% static 'images/1.jpeg'%}" alt="Shaver Image - 1">
+        <img src="{% static 'images/2.jpg'%}" alt="Shaver Image - 2">
+        <img src="{% static 'images/3.jpg'%}" alt="Shaver Image - 3">
+    </div>
+    <h2>Представляємо професійний тример</h2>
+    <p>Тример має ергономічний дизайн, що забезпечує комфортне та безпечне використання, а також оснащений потужним мотором, який забезпечує стабільну роботу без затягування волосся.</p>
+    <ul>
+        <li>Матеріал леза: Нержавіюча сталь</li>
+        <li>Час використання: 160 хвилин</li>
+        <li>Метод зарядки: USB зарядка</li>
+        <li>В комплекті 4 насадки (1.5 мм | 2 мм | 3 мм | 4 мм)</li>
+    </ul>
+    <p>Сучасні технології гарантують рівномірну стрижку без подразнень шкіри. Цей тример для догляду за бородою та зачіскою є ідеальним вибором для чоловіків, які прагнуть виглядати бездоганно щодня.</p>
+    <a class="buy-now-button" id="buyNowButton">Придбати - 400.00 грн.</a>
+
+
+</section>
+
+
+<footer>
+
+    &copy; 2024 Shave
+</footer>
+
+<div id="purchaseModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <p>Заповніть свої дані, для відправки!</p>
+        <form id="purchaseForm" method="post", action='/ajax/form_submission/'>
+
+            <input type="text" name="Name" placeholder="Ім'я" required>
+            <input type="text" name="lastName" placeholder="Прізвище" required>
+            <input type="text" name="middleName" placeholder="По батькові">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="phoneNumber" placeholder="Мобільний" required>
+            <input type="text" name="city" placeholder="Місто" required>
+            <input type="text" name="novaPoshtaNumber" placeholder="Номер нової пошти" required>
+            <label><input type="checkbox" name="feetBack" >Не потрібно телефонувати</label><br> 
+            <button type="submit" class="modal-buy-button", name='save'>Зробити замовлення</button>
+        </form>
+    </div>
+</div> 
+
+<script src="{% static 'js/main_1.js'%}"></script>
+
+</body>
+</html>
