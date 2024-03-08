@@ -7,27 +7,30 @@ services:
       context: .
     image: django_my_api
     volumes:
-      - ./myproject/persistentdata/static:/var/www/static # <--here
-      - ./myproject/persistentdata/media:/var/www/media # <--here
-#
-#  nginx:
-#    restart: always
-#    build:
-#      context: ./nginx
-#    ports:
-#      - "80:80"
-#      - "443:443"
-#    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-#    volumes:
-#      - ./persistentdata/certbot/conf:/etc/letsencrypt
-#      - ./persistentdata/certbot/www:/var/www/certbot
-#      - ./persistentdata/static:/var/www/static # <--here
-#      - ./persistentdata/media:/var/www/media # <--here
-#
-#
-#  certbot:
-#    image: certbot/certbot
-#    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-#    volumes:
-#      - ./persistentdata/certbot/conf:/etc/letsencrypt # <--here
-#      - ./persistentdata/certbot/www:/var/www/certbot
+      - ./static:/var/www/static # <--here
+      - ./static/images:/var/www/media # <--here
+
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    volumes:
+      - ./persistentdata/certbot/conf:/etc/letsencrypt
+      - ./persistentdata/certbot/www:/var/www/certbot
+      - ./static:/var/www/static # <--here
+      - ./static/images:/var/www/media # <--here
+
+
+  certbot:
+    image: certbot/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    volumes:
+      - ./persistentdata/certbot/conf:/etc/letsencrypt # <--here
+      - ./persistentdata/certbot/www:/var/www/certbot
+
+

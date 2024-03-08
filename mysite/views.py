@@ -2,7 +2,11 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
-from .send_email import send_email
+from .send_email import send_data
+from pytz import timezone
+from datetime import datetime
+
+TIMEZONE = timezone('Europe/Kiev')
 
 
 # Create your views here.
@@ -15,7 +19,6 @@ def one_page(request):
 @require_http_methods(["POST"])
 def handle_ajax_form(request):
     data = request.POST
-
     name = data.get('Name')
     last_name = data.get('lastName')
     middle_name = data.get('middleName')
@@ -30,8 +33,9 @@ def handle_ajax_form(request):
     else:
         call = 'Yes'
 
-    msg = f'Name: {name} \nMiddleName: {middle_name} \nLastName: {last_name} \nEmail: {email}  \nPhone: {phone_number} \nCity: {city} \nPost: {nova_poshta_number} \nCall: {call}'
-    send_email(msg)
+    time_update = datetime.now(TIMEZONE).strftime('%d.%m - %H:%M:%S')
+    send_data([name, last_name, middle_name, email, phone_number, city, nova_poshta_number, call, time_update])
+
+    print('DONE')
 
     return JsonResponse({"message": "Form data received successfully!"})
-

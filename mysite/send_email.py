@@ -1,27 +1,15 @@
-from email.message import EmailMessage
-import ssl
-import smtplib
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-my_email = os.environ.get('MY_EMAIL')
-my_pwd = os.environ.get('MY_PWD')
-reciver = os.environ.get('RECIVER')
+from pygsheets import authorize
 
 
-def send_email(body: str):
-    subject = 'New Order'
-    em = EmailMessage()
-    em['From'] = my_email
-    em['To'] = reciver
-    em['Subject'] = subject
 
-    em.set_content(body)
+spreadsheet = authorize(service_file='./key_sheet.json').open('PersonalData')
 
-    context = ssl.create_default_context()
 
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
-        smtp.login(my_email, my_pwd)
-        smtp.sendmail(my_email, reciver, em.as_string())
+def send_data(values: list):
+    wks = spreadsheet.worksheet('title', 'Shaver')
+
+    num_rows = len(wks.get_col(1, include_tailing_empty=False))
+    print('ok')
+    wks.update_row(num_rows + 1, values)
+
+
